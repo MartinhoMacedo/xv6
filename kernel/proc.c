@@ -168,6 +168,8 @@ freeproc(struct proc *p)
   p->chan = 0;
   p->killed = 0;
   p->xstate = 0;
+  // Added
+  p->tracemask = 0;
   p->state = UNUSED;
 }
 
@@ -311,6 +313,9 @@ fork(void)
   safestrcpy(np->name, p->name, sizeof(p->name));
 
   pid = np->pid;
+
+  // Copy tracemask
+  np->tracemask = p->tracemask;
 
   release(&np->lock);
 

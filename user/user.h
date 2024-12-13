@@ -1,3 +1,4 @@
+#include <stdint.h>
 struct stat;
 
 // system calls
@@ -22,6 +23,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+// Added
+int trace(uint32_t mask);
 
 // ulib.c
 int stat(const char*, struct stat*);
